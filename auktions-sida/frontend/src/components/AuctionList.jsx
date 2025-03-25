@@ -5,20 +5,8 @@ import "./AuctionList.css";
 
 const API_URL = import.meta.env.VITE_API_BASE_URL;
 
-const AuctionList = () => {
-  const [auctions, setAuctions] = useState([]);
-
+const AuctionList = ({ auctions }) => {
   // Hämta auktioner från backend
-  useEffect(() => {
-    axios
-      .get(`${API_URL}/auctions`)
-      .then((response) => {
-        setAuctions(response.data);
-      })
-      .catch((error) => {
-        console.error("Fel vid hämtning av auktioner:", error);
-      });
-  }, []);
 
   return (
     <div>
