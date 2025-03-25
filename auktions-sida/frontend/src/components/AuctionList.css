@@ -1,0 +1,18 @@
+.auction-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.auction-card strong {
+  font-size: 1.2rem;
+}
+
+.auction-card {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  border-radius: 5px;
+  max-width: 500px;
+}
