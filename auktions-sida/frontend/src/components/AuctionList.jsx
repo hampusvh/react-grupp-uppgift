@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import SearchBar from "./Searchbar";
 import "./AuctionList.css";
 
 const API_URL = import.meta.env.VITE_API_BASE_URL;
