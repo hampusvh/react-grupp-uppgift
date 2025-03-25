@@ -50,6 +50,7 @@ const AddAuction = () => {
                 type="date"
                 placeholder="Slut datum"
                 value={endDate}
+                min={new Date().toLocaleDateString()}
                 onChange={(e) => setEndDate(e.target.value)}
                 required
             />
