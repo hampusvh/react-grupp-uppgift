@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import SearchBar from "./Searchbar";
 
 const AuctionList = () => {
     const [auctions, setAuctions] = useState([]);
