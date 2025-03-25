@@ -26,6 +26,7 @@ const AuctionList = () => {
       <div className="auction-list">
         {auctions.map((auction) => (
           <div key={auction._id} className="auction-card">
+            <div className="image-placeholder">Bild</div>
             <p>
               <strong>{auction.title}</strong>
             </p>
@@ -58,6 +59,7 @@ const AuctionList = () => {
               </p>
             )}
             {auction.createdBy && <p>Skapad av: {auction.createdBy}</p>}
+            <button className="bid-btn">Lägg bud nu!</button>
           </div>
         ))}
       </div>
