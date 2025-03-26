@@ -32,7 +32,7 @@ const AddAuction = ({ onAuctionCreated }) => {
       });
   };
 
- create-auction
+  
     return (
         <form onSubmit={handleSubmit}>
             <h2>Lägg till Auktion</h2>
