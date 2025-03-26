@@ -11,7 +11,7 @@ const AuctionList = ({ auctions }) => {
       new Date(auction.endDate) > now &&
       auction.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
-
+  console.log("Auktioner från backend:", auctions);
   return (
     <div>
       <h2>Auktioner</h2>
