@@ -32,48 +32,50 @@ const AddAuction = ({ onAuctionCreated }) => {
       });
   };
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <h2>Lägg till Auktion</h2>
-      <input
-        type="text"
-        placeholder="Auktionsnamn"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        required
-      />
-      <input
-        type="text"
-        placeholder="Beskrivning"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        required
-      />
-      <input
-        type="number"
-        placeholder="Startpris"
-        value={startPrice}
-        onChange={(e) => setStartPrice(Number(e.target.value))}
-        required
-      />
-      <input
-        type="date"
-        placeholder="Slut datum"
-        value={endDate}
-        min={new Date().toLocaleDateString()}
-        onChange={(e) => setEndDate(e.target.value)}
-        required
-      />
-      <input
-        type="text"
-        placeholder="Skapad av"
-        value={creator}
-        onChange={(e) => setCreator(e.target.value)}
-        required
-      />
-      <button type="submit">Lägg till</button>
-    </form>
-  );
+
+  
+    return (
+        <form onSubmit={handleSubmit}>
+            <h2>Lägg till Auktion</h2>
+            <input
+                type="text"
+                placeholder="Auktionsnamn"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                required
+            />
+            <input
+                type="text"
+                placeholder="Beskrivning"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                required
+            />
+            <input
+                type="number"
+                placeholder="Startpris"
+                value={startPrice}
+                onChange={(e) => setStartPrice(Number(e.target.value))}
+                required
+            />
+            <input
+                type="date"
+                placeholder="Slut datum"
+                value={endDate}
+                min={new Date().toLocaleDateString()}
+                onChange={(e) => setEndDate(e.target.value)}
+                required
+            />
+            <input
+                type="text"
+                placeholder="Skapad av"
+                value={creator}
+                onChange={(e) => setCreator(e.target.value)}
+                required
+            />
+            <button type="submit">Lägg till</button>
+        </form>
+    );
 };
 
 export default AddAuction;

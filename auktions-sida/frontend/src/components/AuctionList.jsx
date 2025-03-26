@@ -6,13 +6,23 @@ import "./AuctionList.css";
 const API_URL = import.meta.env.VITE_API_BASE_URL;
 
 const AuctionList = ({ auctions }) => {
+  const [searchTerm, setSearchTerm] = useState("");
+  
+  const filteredAuctions = auctions.filter((auction) =>
+   auction.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
   // Hämta auktioner från backend
 
   return (
     <div>
+
+      <h2>Auktioner</h2>
+      <SearchBar onSearch={setSearchTerm} />
+
       <h2 className="auctions-title">Pågående auktioner</h2>
+
       <div className="auction-list">
-        {auctions.map((auction) => (
+        {filteredAuctions.map((auction) => (
           <div key={auction._id} className="auction-card">
             <div className="image-placeholder">Bild</div>
             <p>
