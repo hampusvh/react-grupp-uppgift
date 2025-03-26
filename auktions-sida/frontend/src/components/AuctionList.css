@@ -1,24 +1,31 @@
+.auctions-title {
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
 .auction-list {
   flex-direction: column;
   gap: 25px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 10px;
+  gap: 50px;
+  margin: 50px;
   justify-items: center;
 }
 
-.auction-card strong {
-  font-size: 1.2rem;
+.card-title {
+  font-size: 24px;
 }
 
 .auction-card {
+  display: grid;
+  grid-template-rows: auto auto auto 1fr auto;
   border: 1px solid black;
-  display: flex;
+  text-align: center;
   flex-direction: column;
   padding: 5px;
-  border-radius: 5px;
-  max-width: 300px;
-  text-align: center;
+  border-radius: 15px;
+  width: 100%;
 }
 
 .image-placeholder {
@@ -29,7 +36,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 6px;
+  border-radius: 15px;
   font-size: 1.1rem;
   font-style: italic;
   margin-bottom: 0.5rem;
@@ -41,7 +48,7 @@
   background-color: #12da5e;
   border: none;
   font-size: 16px;
-  border-radius: 5px;
+  border-radius: 15px;
 }
 
 .bid-btn:hover {
