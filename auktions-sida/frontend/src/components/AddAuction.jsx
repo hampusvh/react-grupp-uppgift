@@ -32,6 +32,7 @@ const AddAuction = ({ onAuctionCreated }) => {
       });
   };
 
+
   
     return (
         <form onSubmit={handleSubmit}>
@@ -75,8 +76,6 @@ const AddAuction = ({ onAuctionCreated }) => {
             <button type="submit">Lägg till</button>
         </form>
     );
-
 };
-
 
 export default AddAuction;
