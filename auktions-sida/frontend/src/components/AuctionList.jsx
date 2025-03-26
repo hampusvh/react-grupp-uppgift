@@ -18,7 +18,7 @@ const AuctionList = ({ auctions }) => {
             <p>
               <strong className="card-title">{auction.title}</strong>
             </p>
-            <p>
+            <p className="item-price">
               <strong>Startpris:</strong> {auction.price} kr
             </p>
             {auction.description && (
