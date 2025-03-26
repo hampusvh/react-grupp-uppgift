@@ -1,27 +1,38 @@
 import { useState } from "react";
 import axios from "axios";
 
-const AddAuction = () => {
-    const [title, setTitle] = useState("");
-    const [startPrice, setStartPrice] = useState("");
-    const [description, setDescription] = useState("");
-    const [startDate, setStartDate] = useState(new Date());
-    const [endDate, setEndDate] = useState("");
-    const [creator, setCreator] = useState("");
+const AddAuction = ({ onAuctionCreated }) => {
+  const [title, setTitle] = useState("");
+  const [startPrice, setStartPrice] = useState("");
+  const [description, setDescription] = useState("");
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState("");
+  const [creator, setCreator] = useState("");
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/auctions/`,
-            { title, description, price: startPrice, startDate, endDate, createdBy: creator })
-            .then(response => {
-                setTitle("");
-                setStartPrice("");
-            })
-            .catch(error => {
-                console.error("Fel vid skapande av auktion:", error);
-            });
-    };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post(`${import.meta.env.VITE_API_BASE_URL}/auctions/`, {
+        title,
+        description,
+        price: startPrice,
+        startDate,
+        endDate,
+        createdBy: creator,
+      })
+      .then((response) => {
+        setTitle("");
+        setStartPrice("");
+        if (onAuctionCreated) {
+          onAuctionCreated();
+        }
+      })
+      .catch((error) => {
+        console.error("Fel vid skapande av auktion:", error);
+      });
+  };
 
+ create-auction
     return (
         <form onSubmit={handleSubmit}>
             <h2>Lägg till Auktion</h2>
@@ -64,6 +75,8 @@ const AddAuction = () => {
             <button type="submit">Lägg till</button>
         </form>
     );
+
 };
+
 
 export default AddAuction;

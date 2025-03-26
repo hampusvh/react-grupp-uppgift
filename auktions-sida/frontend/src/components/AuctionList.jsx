@@ -5,20 +5,8 @@ import "./AuctionList.css";
 
 const API_URL = import.meta.env.VITE_API_BASE_URL;
 
-const AuctionList = () => {
-  const [auctions, setAuctions] = useState([]);
-
+const AuctionList = ({ auctions }) => {
   // Hämta auktioner från backend
-  useEffect(() => {
-    axios
-      .get(`${API_URL}/auctions`)
-      .then((response) => {
-        setAuctions(response.data);
-      })
-      .catch((error) => {
-        console.error("Fel vid hämtning av auktioner:", error);
-      });
-  }, []);
 
   return (
     <div>
@@ -26,6 +14,7 @@ const AuctionList = () => {
       <div className="auction-list">
         {auctions.map((auction) => (
           <div key={auction._id} className="auction-card">
+            <div className="image-placeholder">Bild</div>
             <p>
               <strong>{auction.title}</strong>
             </p>
@@ -58,6 +47,7 @@ const AuctionList = () => {
               </p>
             )}
             {auction.createdBy && <p>Skapad av: {auction.createdBy}</p>}
+            <button className="bid-btn">Lägg bud nu!</button>
           </div>
         ))}
       </div>
