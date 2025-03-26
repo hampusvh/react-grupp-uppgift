@@ -13,6 +13,11 @@ const AuctionList = ({ auctions }) => {
   );
   // Hämta auktioner från backend
 
+  const now = new Date();
+  const ongoingAuctions = auctions.filter(
+    (auction) => new Date(auction.endDate) > now
+  );
+
   return (
     <div>
 
@@ -23,6 +28,7 @@ const AuctionList = ({ auctions }) => {
 
       <div className="auction-list">
         {filteredAuctions.map((auction) => (
+        {ongoingAuctions.map((auction) => (
           <div key={auction._id} className="auction-card">
             <div className="image-placeholder">Bild</div>
             <p>
