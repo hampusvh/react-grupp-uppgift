@@ -59,7 +59,7 @@ const AuctionList = ({ auctions, showClosed = false }) => {
                 <strong>Skapad av:</strong> {auction.createdBy}
               </p>
             )}
-            <button className="bid-btn">Lägg bud nu!</button>
+            {!showClosed && <button className="bid-btn">Lägg bud nu!</button>}
           </div>
         ))}
       </div>
