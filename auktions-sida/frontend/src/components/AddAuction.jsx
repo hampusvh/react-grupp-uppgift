@@ -12,13 +12,13 @@ const AddAuction = ({ onAuctionCreated }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post(`${import.meta.env.VITE_API_BASE_URL}/auctions/`, {
+      .post(`${import.meta.env.VITE_API_BASE_URL}/api/auctions/`, {
         title,
         description,
         price: startPrice,
         startDate,
         endDate,
-        createdBy: creator,
+        createdBy: creator
       })
       .then((response) => {
         setTitle("");

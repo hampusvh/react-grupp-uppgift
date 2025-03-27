@@ -49,4 +49,33 @@ router.post('/', async (req, res) => {
     }
 });
 
+// Hämta bud
+router.get('/:id/bids', async (req, res) => {
+    const auctionId = req.params.id;
+    try {
+        const auction = await Auction.findById(auctionId)
+        if (!auction) return res.status(404).json({ error: 'Auction not found' });
+        res.status(200).json({ bids: auction.bids });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: err.message });
+    }
+});
+
+// Lägg till bud
+router.post('/:id/bids', async (req, res) => {
+    const auctionId = req.params.id;
+    const { createdBy, amount } = req.body;
+    try {
+        const auction = await Auction.findById(auctionId);
+        if (!auction) return res.status(404).json({ error: 'Auction not found' });
+        auction.bids.push({ createdBy, amount });
+        await auction.save();
+        res.status(200).json({ message: 'Bid added', auction });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: err.message });
+    }
+});
+
 module.exports = router;
