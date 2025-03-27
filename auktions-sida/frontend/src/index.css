@@ -1,12 +1,19 @@
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
-    margin: 0;
-    padding: 0;
-  }
+  background-color: #f9f9f9;
+  color: #111;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+body.dark {
+  background-color: #111;
+  color: #f9f9f9;
+}
+
+body.dark .auction-card {
+  background-color: #1c1c1c;
+  color: #f9f9f9;
+}
   
   h1, h2, h3 {
     font-family: 'Merriweather', serif;
   }
-  

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SearchBar from "./Searchbar";
+import SearchBar from "./SearchBar";
 import "./AuctionList.css";
 
 const AuctionList = ({ auctions, showClosed = false }) => {
@@ -19,8 +19,12 @@ const AuctionList = ({ auctions, showClosed = false }) => {
   console.log("Auktioner från backend:", auctions);
   return (
     <div>
-      <h2>Auktioner</h2>
-      <SearchBar onSearch={setSearchTerm} />
+<h2 className="auction-main-title">Auktioner</h2>
+
+<div className="searchbar-wrapper">
+  <SearchBar onSearch={setSearchTerm} />
+</div>
+
 
       <h2 className="auctions-title">
         {showClosed ? "Avslutade auktioner" : "Pågående auktioner"}

@@ -32,7 +32,6 @@ input {
     
 }
 
-
 input:focus {
     border-color: 007bff;
     outline: none;
@@ -58,3 +57,32 @@ button:hover {
 body {
     background-color: #f4f4f4;
 }
+
+.search-bar {
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 400px;
+    margin: 1rem 0;
+    background-color: white;
+    color: black;
+    transition: all 0.3s ease;
+  }
+
+  .searchbar-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+  
+  body.dark .search-bar {
+    background-color: #222;
+    color: #f0f0f0;
+    border: 1px solid #555;
+  }
+  
+  body.dark .search-bar::placeholder {
+    color: #aaa;
+  }
