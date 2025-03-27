@@ -22,29 +22,31 @@ const AuctionList = ({ auctions }) => {
   };
 
   const submitBid = async (auctionId, auctionPrice) => {
-    const bidAmount = parseFloat(bids[auctionId]);
-
-    if (!bidAmount || isNaN(bidAmount) || bidAmount <= 0) {
-      alert("Ange ett giltigt bud");
-      return;
-    }
-
-    if (bidAmount < auctionPrice) {
-      alert(`Ditt bud måste vara minst ${auctionPrice} kr!`);
-      return;
-    }
-
     try {
-      const response = await fetch(`http://localhost:5000/api/bids`, {
+      const bidAmount = parseFloat(bids[auctionId]);
+  
+      if (!bidAmount || isNaN(bidAmount) || bidAmount <= 0) {
+        alert("Ange ett giltigt bud");
+        return;
+      }
+  
+      if (bidAmount < auctionPrice) {
+        alert(`Ditt bud måste vara minst ${auctionPrice} kr!`);
+        return;
+      }
+
+      const createdBy = "amanda"
+  
+      const response = await fetch(`http://localhost:5001/api/auctions/${auctionId}/bids`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ auctionId, amount: bidAmount }),
+        body: JSON.stringify({ auctionId, amount: bidAmount, createdBy}),
       });
-      
+  
       if (!response.ok) {
         throw new Error("Fel vid budgivning");
       }
-
+  
       alert(`Ditt bud på ${bidAmount} kr har lagts!`);
       setBids((prev) => ({ ...prev, [auctionId]: "" }));
     } catch (error) {
@@ -52,6 +54,7 @@ const AuctionList = ({ auctions }) => {
       alert("Kunde inte lägga bud, försök igen.");
     }
   };
+  
  
   return (
     <div>
