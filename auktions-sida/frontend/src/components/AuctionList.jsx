@@ -2,25 +2,32 @@ import { useState } from "react";
 import SearchBar from "./Searchbar";
 import "./AuctionList.css";
 
-const AuctionList = ({ auctions }) => {
+const AuctionList = ({ auctions, showClosed = false }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const now = new Date();
 
-  const filteredOngoingAuctions = auctions.filter(
-    (auction) =>
-      new Date(auction.endDate) > now &&
-      auction.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredAuctions = auctions.filter((auction) => {
+    const auctionEnds = new Date(auction.endDate);
+    const isClosed = auctionEnds <= now;
+    const matchesSearch = auction.title
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+
+    return showClosed ? isClosed && matchesSearch : !isClosed && matchesSearch;
+  });
+
   console.log("Auktioner från backend:", auctions);
   return (
     <div>
       <h2>Auktioner</h2>
       <SearchBar onSearch={setSearchTerm} />
 
-      <h2 className="auctions-title">Pågående auktioner</h2>
+      <h2 className="auctions-title">
+        {showClosed ? "Avslutade auktioner" : "Pågående auktioner"}
+      </h2>
 
       <div className="auction-list">
-        {filteredOngoingAuctions.map((auction) => (
+        {filteredAuctions.map((auction) => (
           <div key={auction._id} className="auction-card">
             <div className="image-placeholder">Bild</div>
             <p>
