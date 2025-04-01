@@ -1,3 +1,5 @@
+import CountdownTimer from "./Countdown";
+
 const AuctionCard = ({ auction, showClosed }) => {
     return (
         <div key={auction.id} className="auction-card">
@@ -31,6 +33,7 @@ const AuctionCard = ({ auction, showClosed }) => {
                     <strong>Skapad av:</strong> {auction.createdBy}
                 </p>
             )}
+            <CountdownTimer endDate={auction.endDate}/>
             {!showClosed && <button className="bid-btn">Lägg bud nu!</button>}
         </div>
     )
