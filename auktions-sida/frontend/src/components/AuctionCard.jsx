@@ -36,7 +36,7 @@ const AuctionCard = ({ auction, showClosed }) => {
             <CountdownTimer endDate={auction.endDate}/>
             {!showClosed && <button className="bid-btn">Lägg bud nu!</button>}
         </div>
-    )
-}
+  );
+};
 
 export default AuctionCard;
