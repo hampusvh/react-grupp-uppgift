@@ -4,6 +4,8 @@
 
 .item-price {
   font-size: 20px;
+  display: flex;
+  align-items: center;
 }
 
 .auction-card {
@@ -48,4 +50,8 @@
 .bid-btn:hover {
   background-color: #0e8d3f;
   transition: 0.3s ease;
+}
+
+.show-bids-btn {
+  color: orange;
 }

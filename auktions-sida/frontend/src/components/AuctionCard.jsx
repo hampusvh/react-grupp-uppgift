@@ -10,6 +10,7 @@ const AuctionCard = ({ auction, showClosed }) => {
       </p>
       <p className="item-price">
         <strong>Utropspris:</strong> {auction.price} kr
+        <button className="show-bids-btn">Aktuellt bud</button>
       </p>
       {auction.description && (
         <p>
